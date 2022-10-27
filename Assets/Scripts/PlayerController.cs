@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
+    private float movementJump;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        movementJump = 0;
 
         SetCountText();
         WintextObject.SetActive(false);
@@ -42,9 +44,18 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = movementValue.Get<Vector2>();
         movementX = movement.x;
         movementY = movement.y;
-
        
     }
+
+    private void OnJump()
+    {
+        if (transform.position.y <= .5)
+        {
+            movementJump = 10.0f;
+        }
+       
+    }
+
     void SetCountText()
     {
         countText.text = "Count:" + count.ToString();
@@ -59,8 +70,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()// Se ejecuta con cada Frame
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);//solo aplicamos fuerza a la X, como hacia arriba no va se pone cero.
+        Vector3 movement = new Vector3(movementX, movementJump, movementY);//solo aplicamos fuerza a la X, como hacia arriba no va se pone cero.
         rb.AddForce(movement * speed);
+        movementJump = 0;
     }
 }
 
