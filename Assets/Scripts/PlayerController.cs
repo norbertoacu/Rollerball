@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         movementJump = 0;
+        
 
         SetCountText();
         WintextObject.SetActive(false);
@@ -39,11 +40,19 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeScene()
     {
-      //  SceneManager.UnloadSceneAsync("MiniGame");
-        SceneManager.LoadScene("LevelTwo");
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+
+       
+        if (scene.name == "LevelOne") { 
+           SceneManager.LoadScene("LevelTwo");
+                  }
+        if (scene.name  == "LevelTwo")
+        {
+            SceneManager.LoadScene("Menu");
+        }
+       
     }
-
-
 
     private void OnMove(InputValue movementValue)
     {
@@ -65,17 +74,20 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count:" + count.ToString();
+        
 
         if (count >= 12)
         {
+                        
             WintextObject.SetActive(true);
-            System.Threading.Thread.Sleep(3000);
+            // System.Threading.Thread.Sleep(3000);
+            
             ChangeScene();
         }
        
     }
 
-
+   
     // Update is called once per frame
     void FixedUpdate()// Se ejecuta con cada Frame
     {
