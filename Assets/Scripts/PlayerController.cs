@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -36,6 +37,11 @@ public class PlayerController : MonoBehaviour
         SetCountText();
     }
 
+    private void ChangeScene()
+    {
+      //  SceneManager.UnloadSceneAsync("MiniGame");
+        SceneManager.LoadScene("LevelTwo");
+    }
 
 
 
@@ -63,7 +69,10 @@ public class PlayerController : MonoBehaviour
         if (count >= 12)
         {
             WintextObject.SetActive(true);
+            System.Threading.Thread.Sleep(3000);
+            ChangeScene();
         }
+       
     }
 
 
