@@ -1,14 +1,6 @@
 #rollerball
 
 
-⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡
-
-## Additions not contemplated in practice ⛽
-
-_Added Music to the Scenes, each one has its own music.
-
-
-
 _Game project with Unity for training purposes for the use and practice of video game programming. Project done step by step with the official Unity tutorial " Roller Ball "_
 
 ## Starting 🚀
